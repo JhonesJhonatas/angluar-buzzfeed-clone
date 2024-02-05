@@ -1,17 +1,14 @@
 <div class="quizzContainer">
   <img src="../../../assets/images/logo.png" alt="BuzzFeed Logo">
-  <span class="title">Título</span>
-  <div class="questionContainer">
-    <span>Questão Selecionada</span>
+  <span class="title">{{ title }}</span>
+  <div *ngIf=!finished class="questionContainer">
+    <span>{{questionselected.question}}</span>
   </div>
-  <div class="optionsContainer">
-    <button>Test</button>
-    <button>Test</button>
-    <button>Test</button>
-    <button>Test</button>
+  <div *ngIf=!finished class="optionsContainer">
+    <button *ngFor="let option of questionselected.options; let i = index" (click)="playerChoose(option.alias)">{{ option.name}}</button>
   </div>
-  <div class="resultContainer">
+  <div *ngIf=finished class="resultContainer">
     <span>Resultado:</span>
-    <small>Você é um super vilão!</small>
+    <small>{{answerSelected}}</small>
   </div>
 </div>
